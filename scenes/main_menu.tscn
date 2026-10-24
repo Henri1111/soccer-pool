@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dm23pno0bgqda"]
+
+[ext_resource type="FontFile" uid="uid://dxd65hhlooutw" path="res://assets/fonts/RasterForgeRegular-JpBgm.ttf" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://fp26w68ihm6w" path="res://assets/gaming-gamepad-icon.svg" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://5hfxlsvr7o0c" path="res://assets/world-globe-line-icon.svg" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://c8wpin1e7vgty" path="res://assets/close-line-icon.svg" id="4_wu84c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1j0s"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="Control" type="Control" unique_id=2118866625]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=332627122]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5019608, 0.5019608, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=247851190]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -15.5
+offset_right = 20.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="ButtonPlay" type="Button" parent="ColorRect/VBoxContainer" unique_id=1748021177]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("1_bqqt6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1j0s")
+text = "Play"
+icon = ExtResource("1_l6cm7")
+expand_icon = true
+
+[node name="ButtonPlayOnline" type="Button" parent="ColorRect/VBoxContainer" unique_id=1332248359]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("1_bqqt6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1j0s")
+text = "Play"
+icon = ExtResource("3_wu84c")
+expand_icon = true
+
+[node name="ButtonQuit" type="Button" parent="ColorRect/VBoxContainer" unique_id=393200944]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("1_bqqt6")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1j0s")
+text = "Quit"
+icon = ExtResource("4_wu84c")
+expand_icon = true
