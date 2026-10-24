@@ -1,3 +1,19 @@
 [gd_scene format=3 uid="uid://53k8flme6rlr"]
 
-[node name="Game" type="Node2D" unique_id=1547599760]
+[node name="Game" type="CanvasLayer" unique_id=931964411]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1125903484]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.45650357, 0.65986586, 0.9596457, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1431651317]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer" unique_id=705378136]
