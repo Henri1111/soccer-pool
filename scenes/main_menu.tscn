@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dm23pno0bgqda"]
 
+[ext_resource type="Script" uid="uid://d21mrbi8nvfky" path="res://scenes/main_menu.gd" id="1_8ln24"]
 [ext_resource type="FontFile" uid="uid://dxd65hhlooutw" path="res://assets/fonts/RasterForgeRegular-JpBgm.ttf" id="1_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://fp26w68ihm6w" path="res://assets/gaming-gamepad-icon.svg" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://5hfxlsvr7o0c" path="res://assets/world-globe-line-icon.svg" id="3_wu84c"]
@@ -21,13 +22,14 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[node name="Control" type="Control" unique_id=2118866625]
+[node name="MainMenu" type="Control" unique_id=2118866625]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8ln24")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=332627122]
 layout_mode = 1
@@ -83,3 +85,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_s1j0s")
 text = "Quit"
 icon = ExtResource("4_wu84c")
 expand_icon = true
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
