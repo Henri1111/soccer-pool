@@ -1,5 +1,32 @@
 [gd_scene format=3 uid="uid://53k8flme6rlr"]
 
+[ext_resource type="Texture2D" uid="uid://d1vfswv7wng1n" path="res://assets/dark_green.png" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://c5a2a7kjsr1hx" path="res://assets/light_green.png" id="2_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://dv2sp320r1ofm" path="res://assets/white.png" id="3_lnu2h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
+texture = ExtResource("1_yqjtg")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iywne"]
+texture = ExtResource("2_lnu2h")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p57ef"]
+texture = ExtResource("3_lnu2h")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8ln24"]
+sources/0 = SubResource("TileSetAtlasSource_lbhrr")
+sources/1 = SubResource("TileSetAtlasSource_iywne")
+sources/2 = SubResource("TileSetAtlasSource_p57ef")
+
 [node name="Game" type="CanvasLayer" unique_id=931964411]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1125903484]
@@ -17,3 +44,4 @@ color = Color(0.45650357, 0.65986586, 0.9596457, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1431651317]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="CanvasLayer" unique_id=705378136]
+tile_set = SubResource("TileSet_8ln24")
