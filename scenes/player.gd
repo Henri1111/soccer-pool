@@ -21,6 +21,12 @@ func apply_impulse_towards_point(point: Vector2, speed) -> void:
 	var velocity: Vector2 = calc_velocity(speed, angle_to_point)
 	apply_impulse(velocity)
 
+func _physics_process(_delta: float) -> void:
+	var speed: float = sqrt(linear_velocity.x ** 2 + linear_velocity.y ** 2)
+	if speed and speed < 50.0:
+		linear_damp = 5.0
+		angular_damp = 5.0
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 		var mouse_event = event as InputEventMouseButton
@@ -36,6 +42,6 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 		if event.is_pressed():
 			currently_dragging = true
 
-func set_blue():
+func set_blue() -> void:
 	is_blue = true
 	$Sprite2D.texture = preload("uid://ml4ol1vuhvbv")
