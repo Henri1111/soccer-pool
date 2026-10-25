@@ -5,9 +5,13 @@ var player_scene: PackedScene = load("res://scenes/player.tscn")
 @onready var aufstellung_1: Node2D = $GameContents/TileMapLayer/Aufstellung1
 @onready var ball: Ball = $GameContents/Ball
 @onready var ball_inital_pos: Marker2D = $GameContents/TileMapLayer/BallInitalPos
+@onready var score_blue: Label = $ColorRect/TextureRect/MarginContainer/HBoxContainer/ScoreBlue
+@onready var score_red: Label = $ColorRect/TextureRect/MarginContainer/HBoxContainer/ScoreRed
 var players: Array[Player] = []
 var whose_turn: int
 var waiting_for_player_action: bool = false
+var points_blue: int = 0
+var points_red: int = 0
 
 func _ready() -> void:
 	ball.global_position = ball_inital_pos.global_position
@@ -50,9 +54,33 @@ func turn() -> void:
 			player.can_drag = true
 		elif not player.is_blue and whose_turn == 0:
 			player.can_drag = true
+		player.linear_damp = 1.3
+		player.angular_damp = 0.0
+	ball.linear_damp = 1.0
+	ball.angular_damp = 0.0
 	whose_turn = 1 if whose_turn == 0 else 0
 	waiting_for_player_action = true
 
 func player_has_actioned() -> void:
 	await get_tree().create_timer(1.0).timeout
 	waiting_for_player_action = false
+
+func _on_left_goal_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.global_position.x = randi_range(244, 440)
+		body.global_position.y = randi_range(200, 440)
+	elif body is Ball: score_goal(1)
+	
+func _on_right_goal_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.global_position.x = randi_range(712, 908)
+		body.global_position.y = randi_range(200, 440)
+	elif body is Ball: score_goal(0)
+
+func score_goal(scorer_team: int) -> void: 
+	if scorer_team == 0: 
+		points_red += 1
+		score_red.text = str(points_red)
+	elif scorer_team == 1: 
+		points_blue += 1
+		score_blue.text = str(points_blue)

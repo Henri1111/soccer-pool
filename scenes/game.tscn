@@ -54,6 +54,9 @@ sources/1 = SubResource("TileSetAtlasSource_iywne")
 sources/2 = SubResource("TileSetAtlasSource_p57ef")
 sources/3 = SubResource("TileSetAtlasSource_lnu2h")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_get2y"]
+size = Vector2(31, 144)
+
 [node name="Game" type="CanvasLayer" unique_id=931964411 groups=["game"]]
 script = ExtResource("1_p57ef")
 
@@ -157,4 +160,21 @@ position = Vector2(244, 284)
 [node name="Player5_red" type="Marker2D" parent="GameContents/TileMapLayer/Aufstellung1" unique_id=393872648]
 position = Vector2(246, 358)
 
+[node name="LeftGoal" type="Area2D" parent="GameContents/TileMapLayer" unique_id=995190784]
+position = Vector2(166, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContents/TileMapLayer/LeftGoal" unique_id=1550251270]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_get2y")
+
+[node name="RightGoal" type="Area2D" parent="GameContents/TileMapLayer" unique_id=446414640]
+position = Vector2(985, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameContents/TileMapLayer/RightGoal" unique_id=66694280]
+shape = SubResource("RectangleShape2D_get2y")
+
 [node name="Ball" parent="GameContents" unique_id=245778740 instance=ExtResource("10_vtaks")]
+position = Vector2(906, 200)
+
+[connection signal="body_entered" from="GameContents/TileMapLayer/LeftGoal" to="." method="_on_left_goal_body_entered"]
+[connection signal="body_entered" from="GameContents/TileMapLayer/RightGoal" to="." method="_on_right_goal_body_entered"]
