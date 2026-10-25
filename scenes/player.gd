@@ -8,6 +8,7 @@ const MAX_DRAG_DISTANCE: float = 200  # pixel
 var currently_dragging = false
 var is_blue = false
 var can_drag = true
+var start_position: Vector2 = Vector2.ZERO
 
 func calc_velocity(speed: float, angle: float) -> Vector2:
 	var x: int = round(speed * cos(deg_to_rad(angle)))

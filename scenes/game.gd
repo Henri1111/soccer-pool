@@ -19,16 +19,31 @@ var players_in_right_goal: Array[Player] = []
 func _ready() -> void:
 	setup_stage()
 
-func clear() -> void:
-	for player: Player in players.duplicate():
-		player.queue_free()
-		players.erase(player)
+func reset() -> void:
+	for player: Player in players:
+		player.linear_velocity = Vector2.ZERO
+		player.angular_velocity = 0.0
+		var tween_position: Tween = create_tween()
+		tween_position.set_ease(Tween.EASE_IN_OUT)
+		tween_position.set_trans(Tween.TRANS_EXPO)
+		tween_position.tween_property(player, "global_position", player.start_position, 1.5)
+		var tween_rotation: Tween = create_tween()
+		tween_rotation.set_ease(Tween.EASE_IN_OUT)
+		tween_rotation.set_trans(Tween.TRANS_EXPO)
+		tween_rotation.tween_property(player, "rotation", 0.0, 1.5)
+	ball = ball_scene.instantiate()
+	game_contents.add_child(ball)
+	ball.global_position = ball_inital_pos.global_position
+	ball.scale = Vector2.ZERO
+	await get_tree().create_timer(0.5).timeout
+	var ball_tween: Tween = create_tween()
+	ball_tween.tween_property(ball, "scale", Vector2.ONE, 0.5)
+	await get_tree().create_timer(1.0).timeout
 	waiting_for_player_action = false
 	players_in_left_goal.clear()
 	players_in_right_goal.clear()
 
 func setup_stage() -> void:
-	clear()
 	await get_tree().process_frame
 	ball = ball_scene.instantiate()
 	game_contents.add_child(ball)
@@ -37,12 +52,17 @@ func setup_stage() -> void:
 		var new_player: Player = player_scene.instantiate()
 		game_contents.add_child(new_player)
 		new_player.global_position = marker.global_position
+		new_player.start_position = new_player.global_position
 		players.append(new_player)
 		var new_player_blue: Player = player_scene.instantiate()
 		new_player_blue.set_blue()
 		game_contents.add_child(new_player_blue)
 		new_player_blue.global_position = marker.global_position
-		new_player_blue.global_position.x = get_viewport().get_visible_rect().size.x - new_player_blue.global_position.x
+		new_player_blue.global_position.x = (
+			get_viewport().get_visible_rect().size.x
+			- new_player_blue.global_position.x
+		)
+		new_player_blue.start_position = new_player_blue.global_position
 		players.append(new_player_blue)
 
 	whose_turn = randi_range(0,1)
@@ -156,7 +176,13 @@ func score_goal(scorer_team: int) -> void:
 	elif scorer_team == 1:
 		points_blue += 1
 		score_blue.text = str(points_blue)
-	await get_tree().create_timer(2.0).timeout
+	ball.linear_damp = 10.0
+	ball.angular_damp = 10.0
+	await get_tree().create_timer(1.0).timeout
+	var tween: Tween = create_tween()
+	tween.tween_property(ball, "scale", Vector2.ZERO, 0.5)
+	await tween.finished
 	ball.queue_free()
 	ball = null
-	setup_stage()
+	reset()
+	turn()
