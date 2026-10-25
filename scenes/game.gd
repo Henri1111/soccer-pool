@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func reset() -> void:
 	for player: Player in players:
+		player.process_mode = Node.PROCESS_MODE_DISABLED
 		player.linear_velocity = Vector2.ZERO
 		player.angular_velocity = 0.0
 		var tween_position: Tween = create_tween()
@@ -32,14 +33,15 @@ func reset() -> void:
 		tween_rotation.set_ease(Tween.EASE_IN_OUT)
 		tween_rotation.set_trans(Tween.TRANS_EXPO)
 		tween_rotation.tween_property(player, "rotation", 0.0, 1.5)
+		tween_rotation.finished.connect(func(): player.process_mode = Node.PROCESS_MODE_ALWAYS)
 	ball = ball_scene.instantiate()
 	game_contents.add_child(ball)
 	ball.global_position = ball_inital_pos.global_position
 	ball.scale = Vector2.ZERO
 	await get_tree().create_timer(0.5).timeout
 	var ball_tween: Tween = create_tween()
-	ball_tween.tween_property(ball, "scale", Vector2.ONE, 0.5)
-	await get_tree().create_timer(1.0).timeout
+	ball_tween.tween_property(ball, "scale", Vector2.ONE, 1.0)
+	await get_tree().create_timer(1.5).timeout
 	waiting_for_player_action = false
 	players_in_left_goal.clear()
 	players_in_right_goal.clear()
@@ -182,7 +184,7 @@ func score_goal(scorer_team: int) -> void:
 	ball.angular_damp = 10.0
 	await get_tree().create_timer(1.0).timeout
 	var tween: Tween = create_tween()
-	tween.tween_property(ball, "scale", Vector2.ZERO, 0.5)
+	tween.tween_property(ball, "scale", Vector2.ZERO, 1.0)
 	await tween.finished
 	ball.queue_free()
 	ball = null
