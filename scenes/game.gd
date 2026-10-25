@@ -134,8 +134,6 @@ func _on_left_goal_body_entered(body: Node2D) -> void:
 		players_in_left_goal.append(body)
 	elif body is Ball:
 		score_goal(1)
-		ball.queue_free()
-		ball = null
 
 func _on_left_goal_body_exited(body: Node2D) -> void:
 	if body is Player:
@@ -146,18 +144,19 @@ func _on_right_goal_body_entered(body: Node2D) -> void:
 		players_in_right_goal.append(body)
 	elif body is Ball:
 		score_goal(0)
-		ball.queue_free()
-		ball = null
 
 func _on_right_goal_body_exited(body: Node2D) -> void:
 	if body is Player:
 		players_in_right_goal.erase(body)
 
-func score_goal(scorer_team: int) -> void: 
-	if scorer_team == 0: 
+func score_goal(scorer_team: int) -> void:
+	if scorer_team == 0:
 		points_red += 1
 		score_red.text = str(points_red)
-	elif scorer_team == 1: 
+	elif scorer_team == 1:
 		points_blue += 1
 		score_blue.text = str(points_blue)
+	await get_tree().create_timer(2.0).timeout
+	ball.queue_free()
+	ball = null
 	setup_stage()
