@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dif2mjvdhpvef"]
+
+[ext_resource type="Script" uid="uid://bi01squn2tw8v" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dnou4fxh3l1im" path="res://assets/textures/star_red.png" id="2_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 19.0
+
+[node name="Player" type="RigidBody2D" unique_id=2081298001]
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=846301041]
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1439498592]
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_g2els")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

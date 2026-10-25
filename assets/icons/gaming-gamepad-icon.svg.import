@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1vfswv7wng1n"
-path="res://.godot/imported/dark_green.png-662b2e19f90c82baea2da80bb2c96872.ctex"
+uid="uid://fp26w68ihm6w"
+path="res://.godot/imported/gaming-gamepad-icon.svg-a8c71577ab3c2ae965ee77404e079412.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dark_green.png"
-dest_files=["res://.godot/imported/dark_green.png-662b2e19f90c82baea2da80bb2c96872.ctex"]
+source_file="res://assets/icons/gaming-gamepad-icon.svg"
+dest_files=["res://.godot/imported/gaming-gamepad-icon.svg-a8c71577ab3c2ae965ee77404e079412.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5hfxlsvr7o0c"
-path="res://.godot/imported/world-globe-line-icon.svg-cf8504720aeb5c727bb07e6b1dfd25eb.ctex"
+uid="uid://coqrokeubl5o8"
+path="res://.godot/imported/center_circle.png-f4489284a0fb34506f21f742df515660.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world-globe-line-icon.svg"
-dest_files=["res://.godot/imported/world-globe-line-icon.svg-cf8504720aeb5c727bb07e6b1dfd25eb.ctex"]
+source_file="res://assets/tileset/center_circle.png"
+dest_files=["res://.godot/imported/center_circle.png-f4489284a0fb34506f21f742df515660.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
