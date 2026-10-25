@@ -4,6 +4,7 @@ var player_scene: PackedScene = load("res://scenes/player.tscn")
 @onready var game_contents: CanvasLayer = $GameContents
 @onready var aufstellung_1: Node2D = $GameContents/TileMapLayer/Aufstellung1
 var players: Array[Player] = []
+var whose_turn: int
 
 func _ready() -> void:
 	for marker: Marker2D in aufstellung_1.get_children():
@@ -17,3 +18,18 @@ func _ready() -> void:
 		new_player_blue.global_position = marker.global_position
 		new_player_blue.global_position.x = get_viewport().get_visible_rect().size.x - new_player_blue.global_position.x
 		players.append(new_player_blue)
+		
+	whose_turn = randi_range(0,1)
+	
+func turn() -> void:
+	for player: Player in players: 
+		if player.is_blue and whose_turn == 0:
+			player.can_drag = false
+		elif not player.is_blue and whose_turn == 1:
+			player.can_drag = false
+		elif player.is_blue and whose_turn == 1:
+			player.can_drag = true
+		elif not player.is_blue and whose_turn == 0:
+			player.can_drag = true
+	
+	

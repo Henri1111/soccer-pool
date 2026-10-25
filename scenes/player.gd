@@ -7,6 +7,7 @@ const MAX_INITIAL_SPEED: float = 1800  # pixel/second
 const MAX_DRAG_DISTANCE: float = 200  # pixel
 var currently_dragging = false
 var is_blue = false
+var can_drag = true
 
 func calc_velocity(speed: float, angle: float) -> Vector2:
 	var x: int = round(speed * cos(deg_to_rad(angle)))
@@ -39,7 +40,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
-		if event.is_pressed():
+		if event.is_pressed() and can_drag:
 			currently_dragging = true
 
 func set_blue() -> void:
