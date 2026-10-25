@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cbncteojbej5m" path="res://assets/icons/score_background.png" id="3_u5sy4"]
 [ext_resource type="FontFile" uid="uid://dxd65hhlooutw" path="res://assets/fonts/RasterForgeRegular-JpBgm.ttf" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://coqrokeubl5o8" path="res://assets/tileset/center_circle.png" id="7_gee14"]
-[ext_resource type="PackedScene" uid="uid://dif2mjvdhpvef" path="res://scenes/player.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://c84arfahglm4i" path="res://scenes/ball.tscn" id="10_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
@@ -141,7 +140,19 @@ position = Vector2(576, 320)
 scale = Vector2(0.119, 0.119)
 texture = ExtResource("7_gee14")
 
-[node name="Player" parent="CanvasLayer" unique_id=2081298001 instance=ExtResource("7_u5sy4")]
-position = Vector2(494, 320)
+[node name="Player1_red" type="Marker2D" parent="CanvasLayer/TileMapLayer" unique_id=1174744969]
+position = Vector2(501, 321)
+
+[node name="Player2_red" type="Marker2D" parent="CanvasLayer/TileMapLayer" unique_id=1856908863]
+position = Vector2(430, 256)
+
+[node name="Player3_red" type="Marker2D" parent="CanvasLayer/TileMapLayer" unique_id=876653639]
+position = Vector2(434, 378)
+
+[node name="Player4_red" type="Marker2D" parent="CanvasLayer/TileMapLayer" unique_id=1120907398]
+position = Vector2(244, 284)
+
+[node name="Player5_red" type="Marker2D" parent="CanvasLayer/TileMapLayer" unique_id=393872648]
+position = Vector2(246, 358)
 
 [node name="Ball" parent="CanvasLayer" unique_id=245778740 instance=ExtResource("10_vtaks")]
