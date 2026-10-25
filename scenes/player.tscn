@@ -9,7 +9,7 @@ bounce = 0.4
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 19.0
 
-[node name="Player" type="RigidBody2D" unique_id=2081298001]
+[node name="Player" type="RigidBody2D" unique_id=2081298001 groups=["player"]]
 input_pickable = true
 mass = 1.7
 physics_material_override = SubResource("PhysicsMaterial_kvpfn")

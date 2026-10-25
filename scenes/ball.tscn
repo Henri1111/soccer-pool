@@ -17,10 +17,8 @@ linear_damp = 1.0
 script = ExtResource("1_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=199577458]
-position = Vector2(576, 320)
 shape = SubResource("CircleShape2D_u5sy4")
 
 [node name="Ball" type="Sprite2D" parent="." unique_id=1589698606]
-position = Vector2(576, 320)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_f7cbr")

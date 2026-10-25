@@ -33,6 +33,8 @@ func _input(event: InputEvent) -> void:
 		var mouse_event = event as InputEventMouseButton
 		if mouse_event.is_released() and currently_dragging:
 			currently_dragging = false
+			get_tree().call_group("player", "disable_dragging")
+			get_tree().call_group("game", "player_has_actioned")
 			var distance: float = min(position.distance_to(mouse_event.position), MAX_DRAG_DISTANCE)
 			var speed = MAX_INITIAL_SPEED * (distance / MAX_DRAG_DISTANCE)
 			var opposite_point = position + -(mouse_event.position - position)
@@ -46,3 +48,6 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 func set_blue() -> void:
 	is_blue = true
 	$Sprite2D.texture = preload("uid://ml4ol1vuhvbv")
+
+func disable_dragging() -> void:
+	can_drag = false
