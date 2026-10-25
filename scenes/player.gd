@@ -6,6 +6,7 @@ class_name Player
 const MAX_INITIAL_SPEED: float = 1800  # pixel/second
 const MAX_DRAG_DISTANCE: float = 200  # pixel
 var currently_dragging = false
+var is_blue = false
 
 func calc_velocity(speed: float, angle: float) -> Vector2:
 	var x: int = round(speed * cos(deg_to_rad(angle)))
@@ -34,3 +35,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			currently_dragging = true
+
+func set_blue():
+	is_blue = true
+	$Sprite2D.texture = preload("uid://ml4ol1vuhvbv")
