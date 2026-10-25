@@ -17,8 +17,9 @@ var players_in_left_goal: Array[Player] = []
 var players_in_right_goal: Array[Player] = []
 
 func _ready() -> void:
+	whose_turn = randi_range(0,1)
 	setup_stage()
-
+	
 func clear() -> void:
 	for player: Player in players.duplicate():
 		player.queue_free()
@@ -45,7 +46,6 @@ func setup_stage() -> void:
 		new_player_blue.global_position.x = get_viewport().get_visible_rect().size.x - new_player_blue.global_position.x
 		players.append(new_player_blue)
 
-	whose_turn = randi_range(0,1)
 	turn()
 
 func _process(_delta: float) -> void:
@@ -153,9 +153,11 @@ func score_goal(scorer_team: int) -> void:
 	if scorer_team == 0:
 		points_red += 1
 		score_red.text = str(points_red)
+		whose_turn = 1
 	elif scorer_team == 1:
 		points_blue += 1
 		score_blue.text = str(points_blue)
+		whose_turn = 0
 	await get_tree().create_timer(2.0).timeout
 	ball.queue_free()
 	ball = null
