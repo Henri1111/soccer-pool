@@ -179,14 +179,18 @@ func score_goal(scorer_team: int) -> void:
 	if scorer_team == 0:
 		points_red += 1
 		score_red.text = str(points_red)
-		whose_turn = 1
+		whose_turn = 0
 	elif scorer_team == 1:
 		points_blue += 1
 		score_blue.text = str(points_blue)
-		whose_turn = 0
+		whose_turn = 1
 	ball.linear_damp = 5.0
 	ball.angular_damp = 5.0
 	ball.process_mode = Node.PROCESS_MODE_DISABLED
 	await get_tree().create_timer(1.5).timeout
 	reset()
 	turn()
+
+
+func _on_close_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
