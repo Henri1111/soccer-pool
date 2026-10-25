@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://dxd65hhlooutw" path="res://assets/fonts/RasterForgeRegular-JpBgm.ttf" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://coqrokeubl5o8" path="res://assets/tileset/center_circle.png" id="7_gee14"]
 [ext_resource type="PackedScene" uid="uid://dif2mjvdhpvef" path="res://scenes/player.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://c84arfahglm4i" path="res://scenes/ball.tscn" id="10_vtaks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
 font = ExtResource("4_0tnpc")
@@ -142,3 +143,5 @@ texture = ExtResource("7_gee14")
 
 [node name="Player" parent="CanvasLayer" unique_id=2081298001 instance=ExtResource("7_u5sy4")]
 position = Vector2(494, 320)
+
+[node name="Ball" parent="CanvasLayer" unique_id=245778740 instance=ExtResource("10_vtaks")]

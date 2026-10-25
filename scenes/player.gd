@@ -3,7 +3,7 @@ class_name Player
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-const MAX_INITIAL_SPEED: float = 200  # pixel/second
+const MAX_INITIAL_SPEED: float = 1800  # pixel/second
 const MAX_DRAG_DISTANCE: float = 200  # pixel
 var currently_dragging = false
 

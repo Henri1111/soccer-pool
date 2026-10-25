@@ -3,11 +3,17 @@
 [ext_resource type="Script" uid="uid://cow16wv5ua3kg" path="res://scenes/ball.gd" id="1_cxlvu"]
 [ext_resource type="Texture2D" uid="uid://c7lahikifmm4s" path="res://assets/textures/tux.svg" id="2_f7cbr"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dinhu"]
+bounce = 0.4
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
 radius = 9.0
 
 [node name="Ball" type="RigidBody2D" unique_id=245778740]
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_dinhu")
 gravity_scale = 0.0
+linear_damp = 1.0
 script = ExtResource("1_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=199577458]
